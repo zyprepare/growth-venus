@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "types"
+    ],
+    "declaration": true,
+    "declarationDir": "./types"
+  },
+  "include": [
+    "src/**/*.ts",
+    "index.d.ts",
+    "global.d.ts"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@venus/sdk",
+  "version": "0.1.0",
+  "description": "组件开发sdk",
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "dev": "tsc -w",
+    "clean": "rimraf dist types"
+  },
+  "keywords": [
+    "黄金流程组件开发sdk",
+    "venus",
+    "stars-fe"
+  ],
+  "author": "zhouyun6",
+  "license": "ISC",
+  "gitHead": "fe525a2611980338fe17cd64bbb41c709fdcc080"
+}

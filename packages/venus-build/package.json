@@ -1,0 +1,47 @@
+{
+  "name": "@venus/build",
+  "version": "0.1.3-beta.10",
+  "description": "组件打包",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "types",
+    "global.d.ts"
+  ],
+  "bin": {
+    "venus": "./bin/venus"
+  },
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "dev": "tsc -w",
+    "clean": "rimraf dist types"
+  },
+  "keywords": [
+    "黄金流程组件构建",
+    "venus",
+    "stars-fe"
+  ],
+  "author": "zhouyun6",
+  "license": "ISC",
+  "dependencies": {
+    "@rollup/plugin-alias": "^3.1.1",
+    "@rollup/plugin-commonjs": "13.0.0",
+    "@rollup/plugin-image": "^2.0.6",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "8.0.1",
+    "@rollup/plugin-url": "^6.0.0",
+    "@types/node": "^14.14.20",
+    "mini-svg-data-uri": "^1.2.3",
+    "postcss": ">=8.2.2",
+    "postcss-nested": "^5.0.3",
+    "postcss-simple-vars": "^6.0.2",
+    "rollup": "^2.35.1",
+    "rollup-plugin-image": "^1.0.2",
+    "rollup-plugin-inject-process-env": "^1.3.1",
+    "rollup-plugin-less": "^1.1.3",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-sass": "^1.2.2",
+    "rollup-plugin-typescript2": "^0.29.0"
+  },
+  "gitHead": "fe525a2611980338fe17cd64bbb41c709fdcc080"
+}

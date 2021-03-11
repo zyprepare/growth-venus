@@ -1,0 +1,1 @@
+export { getCacheAddress } from './Location';

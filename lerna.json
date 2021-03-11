@@ -1,0 +1,18 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "command": {
+    "publish": {
+      "push": false,
+      "registry": "http://www.npmjs.com",
+      "message": "chore: publish"
+    },
+    "ignoreChanges": [
+      "*.md"
+    ]
+  },
+  "useWorkspaces": true,
+  "npmClient": "yarn",
+  "version": "independent"
+}
