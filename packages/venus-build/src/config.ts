@@ -1,3 +1,4 @@
+const path = require('path')
 const RollupJson = require('@rollup/plugin-json')
 const RollupCommonjs = require('@rollup/plugin-commonjs')
 const RollupTypescript = require('rollup-plugin-typescript2')
@@ -8,6 +9,9 @@ const simplevars = require('postcss-simple-vars')
 const nested = require('postcss-nested')
 const injectProcessEnv = require('rollup-plugin-inject-process-env')
 const alias = require('@rollup/plugin-alias')
+const RollupCopy = require('rollup-plugin-copy')
+// const argv = require('minimist')(process.argv.slice(2))
+import { posix } from 'path'
 import { InputOptions, OutputOptions } from 'rollup'
 import { getConfig, setResolveFile } from './utils'
 
@@ -30,7 +34,7 @@ const customResolver = nodeResolve({
 let {
   input = resolveFile('src/index.ts'),
   output = 'lib',
-  cssModuels,
+  cssModules,
   plugins = [],
   externalPackages = [],
   aliasEntries = {
@@ -53,52 +57,69 @@ let defaultExternalPackages = [
   '@tarojs/react'
 ]
 
-let inputOptions: InputOptions = {
-  input,
-  external: externalPackages.concat(defaultExternalPackages),
-  plugins: [
-    nodeResolve({
-      // moduleDirectories: ['node_modules']
-      customResolveOptions: {
-        moduleDirectory: 'node_modules'
-      }
-    }),
-    RollupCommonjs({
-      include: /\/node_modules\//
-    }),
-    RollupJson(),
-    RollupTypescript({
-      tsconfig,
-      abortOnError: false
-    }),
-    image({
-      dom: false
-    }),
-    postcss({
-      plugins: [simplevars(), nested()],
-      modules: cssModuels,
-      extract: resolveFile(output, 'index.css')
-      // extensions: ['.css', '.less', '.scss']
-    }),
-    injectProcessEnv(ENV),
-    alias({
-      entries: aliasEntries,
-      customResolver
-    })
-  ].concat(plugins)
+const getInputOptions = argv => {
+  let isBuidUI = argv.t && argv.t === 'ui'
+
+  let inputOptions: InputOptions = {
+    input,
+    external: externalPackages.concat(defaultExternalPackages),
+    plugins: [
+      nodeResolve({
+        customResolveOptions: {
+          moduleDirectory: 'node_modules'
+        }
+      }),
+      RollupCommonjs({
+        include: /\/node_modules\//
+      }),
+      RollupJson(),
+      RollupTypescript({
+        tsconfig,
+        abortOnError: false
+      }),
+      image({
+        dom: false
+      }),
+      isBuidUI
+        ? RollupCopy({
+            targets: [
+              {
+                src: posix.join('src/style'),
+                dest: posix.join(output)
+              }
+            ]
+          })
+        : postcss({
+            plugins: [simplevars(), nested()],
+            modules: cssModules,
+            extract: resolveFile(output, 'index.css')
+          }),
+      injectProcessEnv(ENV),
+      alias({
+        entries: aliasEntries,
+        customResolver
+      })
+    ].concat(plugins)
+  }
+
+  return inputOptions
 }
 
-let outputOptions: Array<OutputOptions> = [
-  {
-    file: resolveFile(output, 'index.js'),
-    format: 'cjs',
-    sourcemap: true
-  },
-  {
-    file: resolveFile(output, 'index.esm.js'),
-    format: 'es',
-    sourcemap: true
-  }
-]
+const getOutputOptions = () => {
+  let outputOptions: Array<OutputOptions> = [
+    {
+      file: resolveFile(output, 'index.js'),
+      format: 'cjs',
+      sourcemap: true
+    },
+    {
+      file: resolveFile(output, 'index.esm.js'),
+      format: 'es',
+      sourcemap: true
+    }
+  ]
 
-export { inputOptions, outputOptions }
+  return outputOptions
+}
+
+export { getInputOptions, getOutputOptions }

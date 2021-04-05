@@ -1,2 +1,2 @@
-declare function build(): Promise<void>;
+declare function build(argv: any): Promise<void>;
 export default build;

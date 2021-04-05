@@ -1,7 +1,7 @@
 export interface CustomConfig {
   input?: string,
   output?: string,
-  cssModuels?: object | boolean,
+  cssModules?: object | boolean,
   plugins?: Array<any>,
   tsconfig?: string,
   ENV?: object,

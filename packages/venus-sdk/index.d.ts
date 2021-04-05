@@ -1,1 +1,1 @@
-declare const domainObj: any;
+declare const wx: any;

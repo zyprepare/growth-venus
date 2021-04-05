@@ -5,8 +5,8 @@
   "command": {
     "publish": {
       "push": false,
-      "registry": "http://www.npmjs.com",
-      "message": "chore: publish"
+      "registry": "http://registry.taobao.com",
+      "message": "chore: publish v%"
     },
     "ignoreChanges": [
       "*.md"

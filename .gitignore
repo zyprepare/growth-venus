@@ -3,7 +3,7 @@ node_modules/
 
 # Yarn and NPM files
 yarn-error.log
-package-lock.json
+# package-lock.json
 
 # Template files
 .temp
@@ -17,15 +17,5 @@ package-lock.json
 # Build outputs
 packages/**/dist/
 dist/
-
-# Docs outputs
-site/
-docs/h5/
-
-# Rollup visualizer file
-stats.html
-
-# Test files
-coverage
 
 *.log

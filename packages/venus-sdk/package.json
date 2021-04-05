@@ -20,5 +20,9 @@
   ],
   "author": "zhouyun6",
   "license": "ISC",
-  "gitHead": "fe525a2611980338fe17cd64bbb41c709fdcc080"
+  "gitHead": "fe525a2611980338fe17cd64bbb41c709fdcc080",
+  "devDependencies": {},
+  "dependencies": {
+    "@tarojs/taro": "3.0.25"
+  }
 }
