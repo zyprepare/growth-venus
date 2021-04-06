@@ -27,7 +27,10 @@
 ## 命令说明
 ```bash
 # 全局安装
-npm install -g @venus/build --registry=http://registry.taobao.com
+npm install -g @venus/build --registry=http://registry.m.jd.com
+
+# 创建组件项目
+venus init 项目名称
 
 # 打包业务组件
 venus build

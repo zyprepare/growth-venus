@@ -1,6 +1,6 @@
 {
   "name": "@venus/build",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "组件打包",
   "main": "dist/build.js",
   "files": [
@@ -31,8 +31,15 @@
     "@rollup/plugin-node-resolve": "8.0.1",
     "@rollup/plugin-url": "^6.0.0",
     "@types/node": "^14.14.20",
+    "child_process": "^1.0.2",
+    "download-git-repo": "^3.0.2",
+    "fs-extra": "^9.1.0",
+    "inquirer": "^8.0.0",
+    "mem-fs": "^1.2.0",
+    "mem-fs-editor": "^8.0.0",
     "mini-svg-data-uri": "^1.2.3",
     "minimist": "^1.2.5",
+    "ora": "^5.4.0",
     "postcss": "^8.2.2",
     "postcss-nested": "^5.0.3",
     "postcss-simple-vars": "^6.0.2",

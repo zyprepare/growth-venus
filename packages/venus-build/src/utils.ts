@@ -16,9 +16,22 @@ export const getConfig = (): CustomConfig => {
   })
 
   if (!filename) {
-    console.log(yellow('未发现配置文件，将采用默认配置.'))
+    // console.log(yellow('未发现配置文件，将采用默认配置.'))
     return {}
   }
 
   return require(resolveFile(filename))
+}
+
+export const getPackageVersion = () => {
+  const resolveFile = setResolveFile(__dirname)
+  const version = require(resolveFile('..', 'package.json')).version
+  return version
+}
+
+export const logPackageVersion = () => {
+  const msg = `Venus ${getPackageVersion()}`
+  console.log()
+  console.log(yellow(msg))
+  console.log()
 }

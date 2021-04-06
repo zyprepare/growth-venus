@@ -6,7 +6,7 @@
     "publish": {
       "push": false,
       "registry": "http://registry.taobao.com",
-      "message": "chore: publish v%"
+      "message": "chore: publish"
     },
     "ignoreChanges": [
       "*.md"
